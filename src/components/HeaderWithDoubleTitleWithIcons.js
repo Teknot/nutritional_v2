@@ -1,10 +1,11 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 
-const HeaderWithLeftRightIcon = ({
+const HeaderWithDoubleTitleWithIcons = ({
   leftIcon,
   rightIcon,
   title,
+  subTitle,
   leftOnPress,
   rightOnPress,
 }) => {
@@ -18,23 +19,25 @@ const HeaderWithLeftRightIcon = ({
         </View>
         {rightIcon && (
           <View>
-            <TouchableOpacity style={{width:28 , height:28}} onPress={rightOnPress}>
-              
+            <TouchableOpacity
+              style={{width: 28, height: 28}}
+              onPress={rightOnPress}>
               <Image source={rightIcon} style={styles.button_image} />
             </TouchableOpacity>
           </View>
         )}
       </View>
+      <Text style={styles.header_subtitle}>{subTitle}</Text>
       <Text style={styles.header_title}>{title}</Text>
     </View>
   );
 };
 
-export default HeaderWithLeftRightIcon;
+export default HeaderWithDoubleTitleWithIcons;
 
 const styles = StyleSheet.create({
   container: {
-    height: 113,
+    height: 133,
     backgroundColor: '#FFFFFF',
     padding: 16,
     width: 400,
@@ -54,6 +57,11 @@ const styles = StyleSheet.create({
   header_title: {
     fontSize: 24,
     fontWeight: '500',
+    color: '#292724',
+  },
+  header_subtitle: {
     marginTop: 24,
+    fontSize: 14,
+    color: '#292724',
   },
 });

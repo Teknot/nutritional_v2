@@ -1,0 +1,54 @@
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import React from 'react';
+import AddBiomakerListCard from './AddBiomakerListCard';
+
+const demyData = [
+  {
+    id: 2,
+    name: 'Hormones',
+    item: [
+      {id: 21, name: 'Estrogen', testType: 'Blood'},
+      {id: 22, name: 'Estrogen', testType: 'Saliva'},
+    ],
+  },
+  {
+    id: 1,
+    name: 'Diabetes & Metabolism',
+    item: [
+      {id: 11, name: 'Insulin', testType: 'Urine'},
+      {id: 12, name: 'Tryglicerides', testType: 'Blood'},
+      {id: 13, name: 'HbC1', testType: 'Blood'},
+    ],
+  },
+];
+const Recently = () => {
+  return (
+    <ScrollView contentContainerStyle={styles.container}
+    showsVerticalScrollIndicator={false}>
+      {demyData.map(item => (
+        <View style={styles.list_view} key={item.id}>
+          <Text style={styles.list_heading}>{item.name}</Text>
+          {item.item.map(childrenItem => (
+            <AddBiomakerListCard
+              childrenItem={childrenItem}
+              key={childrenItem.id}
+            />
+          ))}
+        </View>
+      ))}
+    </ScrollView>
+  );
+};
+
+export default Recently;
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    paddingBottom:240
+  },
+  list_heading: {
+    fontSize: 18,
+    color: 'black',
+  },
+});

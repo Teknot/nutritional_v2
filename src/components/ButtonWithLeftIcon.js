@@ -1,9 +1,11 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 
-const ButtonWithLeftIcon = () => {
+const ButtonWithLeftIcon = ({onPress}) => {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button}
+    onPress={onPress}
+    >
       <Image source={require('../assets/icons/Plus.png')} tintColor={'black'} />
       <Text style={styles.button_text}>Add different test category result</Text>
     </TouchableOpacity>
@@ -24,6 +26,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#D0D5DD',
     marginTop: 10,
+    marginBottom: 20,
   },
   button_text: {
     fontSize: 16,

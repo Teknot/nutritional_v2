@@ -11,9 +11,9 @@ const InputWithDropDown = ({
 }) => {
   return (
     <View>
-      <Text style={styles.label}>label</Text>
+      <Text style={styles.label}>{label}</Text>
       <View style={styles.input_view}>
-        <TextInput placeholder="Enter Name" style={styles.input} />
+        <TextInput placeholder={textPlaceholder} style={styles.input} />
         <Dropdown
           style={styles.dropdown}
           placeholderStyle={styles.placeholderStyle}
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#252B42',
     marginHorizontal: 3,
+    marginTop:10
   },
   dropdown: {
     height: 44,

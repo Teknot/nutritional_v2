@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#252B42',
     marginHorizontal: 3,
+    marginLeft:5
   },
   dropdown: {
     height: 44,
