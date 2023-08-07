@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import React from 'react';
 import AddBiomakerListCard from './AddBiomakerListCard';
+import fonts from '../../utils/fonts';
 
 const demyData = [
   {
@@ -23,17 +24,20 @@ const demyData = [
 ];
 const Recently = () => {
   return (
-    <ScrollView contentContainerStyle={styles.container}
-    showsVerticalScrollIndicator={false}>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}>
       {demyData.map(item => (
         <View style={styles.list_view} key={item.id}>
           <Text style={styles.list_heading}>{item.name}</Text>
-          {item.item.map(childrenItem => (
-            <AddBiomakerListCard
-              childrenItem={childrenItem}
-              key={childrenItem.id}
-            />
-          ))}
+          <View style={styles.subList_view}>
+            {item.item.map(childrenItem => (
+              <AddBiomakerListCard
+                childrenItem={childrenItem}
+                key={childrenItem.id}
+              />
+            ))}
+          </View>
         </View>
       ))}
     </ScrollView>
@@ -45,10 +49,17 @@ export default Recently;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    paddingBottom:240
+    paddingBottom: 240,
   },
   list_heading: {
     fontSize: 18,
-    color: 'black',
+    color: '#22212A',
+    fontFamily:fonts.MontserratSemiBold
+  },
+  subList_view: {
+    marginTop: 10,
+  },
+  list_view: {
+    paddingVertical: 16,
   },
 });

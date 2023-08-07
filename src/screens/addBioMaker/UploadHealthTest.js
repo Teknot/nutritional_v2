@@ -14,11 +14,11 @@ import HeaderWithLeftRightIcon from '../../components/HeaderWithLeftRightIcon';
 import cross from '../../assets/icons/X.png';
 import question from '../../assets/icons/Question.png';
 import DropDownMenuWithLabel from '../../components/DropDownMenuWithLabel';
-import DateAndTime from '../../components/DateAndTime';
 import FileUploaderWithLabel from '../../components/FileUploaderWithLabel';
 import ButtonWithLeftIcon from '../../components/ButtonWithLeftIcon';
 import CustomButton from '../../components/CustomButton';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import fonts from '../../utils/fonts';
 const listData = [
   {label: 'hello', value: 'hello'},
   {label: 'hello', value: 'hello'},
@@ -27,11 +27,9 @@ const listData = [
 const UploadHealthTest = ({navigation}) => {
   const [selectCategory, setSelectCategory] = useState('');
   const [DatePickerVisibility, setDatePickerVisibility] = useState(false);
-  const [selectedDate, setSelectedDate] = useState('');
   const [showDate, setShowDate] = useState('Select Date');
   const [timePickerVisibility, setTimePickerVisibility] = useState(false);
-  const [selectedTime, setSelectedTime] = useState('');
-  const [showTime, setShowTime] = useState('Select Date');
+  const [selectedTime, setSelectedTime] = useState('Select Time');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -46,7 +44,7 @@ const UploadHealthTest = ({navigation}) => {
     let splitDate = NewDate[0].split('-');
     let finaldate = splitDate[2] + '/' + splitDate[1] + '/' + splitDate[0];
     setShowDate(finaldate);
-    setSelectedDate(date);
+
     hideDatePicker();
   };
   const showTimePicker = () => {
@@ -57,14 +55,13 @@ const UploadHealthTest = ({navigation}) => {
     setTimePickerVisibility(false);
   };
 
-  const handleTimeConfirm = date => {
-    let NewDate = date.toISOString().split('T');
-    let splitDate = NewDate[0].split('-');
-    let finaldate = splitDate[2] + '/' + splitDate[1] + '/' + splitDate[0];
-    setShowTime(finaldate);
-    setSelectedTime(date);
-    console.log(finaldate);
-    console.log(date);
+  const handleTimeConfirm = time => {
+    let newTime = new Date(time);
+    let LocalTime = newTime.toLocaleTimeString();
+    let timeArray = LocalTime.split(':');
+    let Time =
+      timeArray[0] + ':' + timeArray[1] + ':' + timeArray[2].split(' ')[1];
+    setSelectedTime(Time);
     hideDatePicker();
   };
   return (
@@ -84,6 +81,7 @@ const UploadHealthTest = ({navigation}) => {
           console.warn('rightPressed');
         }}
         title={'Import health record'}
+        color={'#292724'}
       />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <DropDownMenuWithLabel
@@ -94,8 +92,8 @@ const UploadHealthTest = ({navigation}) => {
           data={listData}
         />
 
-        <View>
-          <Text style={styles.label}>Label</Text>
+        <View style={styles.dateAndTime_view}>
+          <Text style={styles.label}>Date and time of test</Text>
           <View style={styles.subContainer}>
             <View style={styles.button_view}>
               <TouchableOpacity style={styles.button} onPress={showDatePicker}>
@@ -111,7 +109,7 @@ const UploadHealthTest = ({navigation}) => {
                 <Image
                   source={require('../../assets/icons/CalendarBlank.png')}
                 />
-                <Text style={styles.button_text}>Select Time</Text>
+                <Text style={styles.button_text}>{selectedTime}</Text>
                 <Image source={require('../../assets/icons/downArrow.png')} />
               </TouchableOpacity>
             </View>
@@ -151,12 +149,6 @@ const UploadHealthTest = ({navigation}) => {
             navigation.navigate('MyHealthRecordList');
           }}
         />
-        {/* <Button
-          title="Components"
-          onPress={() => {
-            navigation.navigate('ComponentsList');
-          }}
-        /> */}
       </ScrollView>
     </SafeAreaView>
   );
@@ -194,12 +186,16 @@ const styles = StyleSheet.create({
   },
   button_text: {
     fontSize: 16,
+    color: '#667085',
+    fontFamily: fonts.InterRegular,
   },
   label: {
-    fontSize: 15,
-    lineHeight: 24,
-    fontWeight: '600',
-    color: '#252B42',
+    fontSize: 14,
+    color: '#344054',
     marginHorizontal: 3,
+    fontFamily: fonts.InterMedium,
+  },
+  dateAndTime_view: {
+    marginVertical: 8,
   },
 });

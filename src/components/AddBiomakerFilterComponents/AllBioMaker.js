@@ -1,14 +1,8 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import React from 'react';
 import AddBiomakerCategoryBtn from './AddBiomakerCategoryBtn';
 import AddBiomakerListCard from './AddBiomakerListCard';
+import fonts from '../../utils/fonts';
 
 const demyData = [
   {
@@ -52,10 +46,12 @@ const AllBioMaker = ({navigation}) => {
             heading={'Metabolic health'}
             subheading={'20 biomarkers'}
             subtitle={'Add biomarker result'}
-            onPress={(heading , subtitle)=>{navigation.navigate('CategoryDetailed' ,{
-              headerTitle : heading,
-              headerSubTitle:subtitle,
-            })}}
+            onPress={(heading, subtitle) => {
+              navigation.navigate('CategoryDetailed', {
+                headerTitle: heading,
+                headerSubTitle: subtitle,
+              });
+            }}
           />
           <AddBiomakerCategoryBtn
             backgroundColor={'#FBFDDF'}
@@ -63,10 +59,12 @@ const AllBioMaker = ({navigation}) => {
             heading={'Hormones'}
             subheading={'15 biomarkers'}
             subtitle={'Add biomarker result'}
-            onPress={(heading , subtitle)=>{navigation.navigate('CategoryDetailed' ,{
-              headerTitle : heading,
-              headerSubTitle:subtitle,
-            })}}
+            onPress={(heading, subtitle) => {
+              navigation.navigate('CategoryDetailed', {
+                headerTitle: heading,
+                headerSubTitle: subtitle,
+              });
+            }}
           />
           <AddBiomakerCategoryBtn
             backgroundColor={'#EEFADE'}
@@ -74,10 +72,12 @@ const AllBioMaker = ({navigation}) => {
             heading={'Diabetes & Metabolism'}
             subheading={'30 biomarkers'}
             subtitle={'Add biomarker result'}
-            onPress={(heading , subtitle)=>{navigation.navigate('CategoryDetailed' ,{
-              headerTitle : heading,
-              headerSubTitle:subtitle,
-            })}}
+            onPress={(heading, subtitle) => {
+              navigation.navigate('CategoryDetailed', {
+                headerTitle: heading,
+                headerSubTitle: subtitle,
+              });
+            }}
           />
           <AddBiomakerCategoryBtn
             backgroundColor={'#EEFADE'}
@@ -85,21 +85,25 @@ const AllBioMaker = ({navigation}) => {
             heading={'Mineral & Vitamin'}
             subheading={'30 biomarkers'}
             subtitle={'Add biomarker result'}
-            onPress={(heading , subtitle)=>{navigation.navigate('CategoryDetailed' ,{
-              headerTitle : heading,
-              headerSubTitle:subtitle,
-            })}}
+            onPress={(heading, subtitle) => {
+              navigation.navigate('CategoryDetailed', {
+                headerTitle: heading,
+                headerSubTitle: subtitle,
+              });
+            }}
           />
         </ScrollView>
         {demyData.map(item => (
           <View style={styles.list_view} key={item.id}>
             <Text style={styles.list_heading}>{item.name}</Text>
-            {item.item.map(childrenItem => (
-              <AddBiomakerListCard
-                childrenItem={childrenItem}
-                key={childrenItem.id}
-              />
-            ))}
+            <View style={styles.subList_view}>
+              {item.item.map(childrenItem => (
+                <AddBiomakerListCard
+                  childrenItem={childrenItem}
+                  key={childrenItem.id}
+                />
+              ))}
+            </View>
           </View>
         ))}
       </ScrollView>
@@ -122,8 +126,12 @@ const styles = StyleSheet.create({
   list_view: {
     paddingVertical: 16,
   },
-  list_heading:{
-    fontSize:18,
-    color:'black'
-  }
+  list_heading: {
+    fontSize: 18,
+    color: '#292724',
+    fontFamily: fonts.MontserratSemiBold,
+  },
+  subList_view: {
+    marginTop: 10,
+  },
 });

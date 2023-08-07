@@ -1,14 +1,10 @@
 import {StyleSheet, SafeAreaView, ScrollView, StatusBar} from 'react-native';
 import React, {useState} from 'react';
-
 import cross from '../../assets/icons/X.png';
 import question from '../../assets/icons/Question.png';
-
 import ButtonWithLeftIcon from '../../components/ButtonWithLeftIcon';
 import CustomButton from '../../components/CustomButton';
-
 import HeaderWithLeftRightIcon from '../../components/HeaderWithLeftRightIcon';
-
 import HealthRecord from '../../components/HealthRecord';
 const listData = [
   {label: 'hello', value: 'hello'},
@@ -17,8 +13,10 @@ const listData = [
 ];
 
 const UploadHealthTestMultiple = ({navigation}) => {
-  const [countComponent, setCountComponent] = useState(1);
-  const [uploadFiles, setUploadFiles] = useState([<HealthRecord />]);
+  // const [uploadFiles, setUploadFiles] = useState(1);
+  const [uploadFiles, setUploadFiles] = useState([
+    <HealthRecord key={Math.random()} />,
+  ]);
 
   const handleAdd = () => {
     const fileId = Math.random();
@@ -30,7 +28,11 @@ const UploadHealthTestMultiple = ({navigation}) => {
       />
     );
     setUploadFiles([...uploadFiles, newComponent]);
+    // setUploadFiles(prevDocs => [...prevDocs, {id: fileId, doc:<HealthRecord/>}]);
   };
+
+  console.log('array of component', uploadFiles);
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -48,6 +50,7 @@ const UploadHealthTestMultiple = ({navigation}) => {
           console.warn('rightPressed');
         }}
         title={'Import health Test Result'}
+        color={'#292724'}
       />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {uploadFiles.map(component => component)}
@@ -74,34 +77,5 @@ const styles = StyleSheet.create({
   scrollContainer: {
     alignItems: 'center',
     paddingBottom: 20,
-  },
-  subContainer: {
-    flexDirection: 'row',
-    marginTop: 8,
-    marginBottom: 3,
-  },
-  button: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 12,
-    alignItems: 'center',
-  },
-  button_view: {
-    borderWidth: 1,
-    borderColor: '#D0D5DD',
-    width: 172,
-    height: 44,
-    justifyContent: 'center',
-    borderRadius: 8,
-  },
-  button_text: {
-    fontSize: 16,
-  },
-  label: {
-    fontSize: 15,
-    lineHeight: 24,
-    fontWeight: '600',
-    color: '#252B42',
-    marginHorizontal: 3,
   },
 });

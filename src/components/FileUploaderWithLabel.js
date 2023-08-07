@@ -1,63 +1,41 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-import React , {useState} from 'react';
+import React, {useState} from 'react';
 import FileUploadItem from './FileUploadItem';
 import DocumentPicker from 'react-native-document-picker';
+import fonts from '../utils/fonts';
 
 const FileUploaderWithLabel = () => {
-  const [uploadFiles , setUploadFiles] = useState([]);
+  const [uploadFiles, setUploadFiles] = useState([]);
 
-  const HandelAddFile = async()=>{
+  const HandelAddFile = async () => {
     try {
       const doc = await DocumentPicker.pick();
-      setUploadFiles(prevDocs => [...prevDocs, { id: Math.random(), doc }])
-      console.log("response from inside and direct function",doc);
-    
-      
+      setUploadFiles(prevDocs => [...prevDocs, {id: Math.random(), doc}]);
+      console.log('response from inside and direct function', doc);
     } catch (error) {
-      if(DocumentPicker.isCancel(error))
-      {
-        console.log('user cancel the upload document' , error)
-      }
-      else{
-        console.log(error)
+      if (DocumentPicker.isCancel(error)) {
+        console.log('user cancel the upload document', error);
+      } else {
+        console.log(error);
       }
     }
- 
-  }
-  // const HandelAddFile = ()=>{
-  //   const fileId = Math.random();
-  //   const newComponent = <FileUploadItem handelDelete={()=>{handleDelete(fileId)}} key={fileId} text={fileId}/>
-  //   setUploadFiles([...uploadFiles, newComponent]);
+  };
+  const handleDelete = index => {
+    console.log(index);
+    const arr = [...uploadFiles];
+    arr.splice(
+      arr.findIndex(value => value.id === index),
+      1,
+    );
+    setUploadFiles(arr);
+  };
 
-  // }
-//   const handelDelete = (index)=>{
-//     console.log(index);
-//     const arr = [...uploadFiles];
-//     arr.splice(
-//       arr.findIndex((value) => value.index === index),
-//       1
-//     );
-//     setUploadFiles(arr)
-// }
-
-// const handleDelete = (index) => {
-//   console.log(index);
-//   const arr = [...uploadFiles];
-//   arr.splice(arr.findIndex((value) => value.props.text === index), 1);
-//   setUploadFiles(arr);
-// };
-
-const handleDelete = (fileIdToDelete) => {
-  const updatedFiles = uploadFiles.filter((component) => component.key !== fileIdToDelete);
-  setUploadFiles(updatedFiles);
-};
-// console.log("hi",uploadFiles[0].doc[0].name)
   return (
     <View style={styles.container}>
       <Text style={styles.label}>FileUploaderWithLabel</Text>
-      <TouchableOpacity style={styles.upload_button_container}
-      onPress={HandelAddFile}
-      >
+      <TouchableOpacity
+        style={styles.upload_button_container}
+        onPress={HandelAddFile}>
         <View style={styles.uploadButtonView}>
           <Image source={require('../assets/icons/UploadSimple.png')} />
         </View>
@@ -66,19 +44,20 @@ const handleDelete = (fileIdToDelete) => {
         </View>
       </TouchableOpacity>
       <View style={styles.file_list_container}>
-       {/* <FileUploadItem/> */}
-       {/* {console.log("response from state",uploadFiles)} */}
-       {
-        
-        uploadFiles?.map((file,index) => { 
-          return(
-          <View key={file.id}>
-            <FileUploadItem name={file?.doc[index]?.name}/>
-            <Text style={{color:'black'}}>{file?.doc[index]?.name}</Text>
-          </View>)
-})
-       }
-      
+        {uploadFiles?.map((file, index) => {
+          return (
+            <View key={file.id}>
+              <FileUploadItem
+                handelDelete={x => {
+                  handleDelete(x);
+                }}
+                name={file?.doc[0]?.name}
+                size={file?.doc[0]?.size}
+                id={file.id}
+              />
+            </View>
+          );
+        })}
       </View>
     </View>
   );
@@ -91,10 +70,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderBottomWidth: 1,
     borderBottomColor: '#D0D5DD',
-    width:358,
+    width: 358,
     marginTop: 16,
     paddingBottom: 20,
-    marginBottom:20
+    marginBottom: 20,
   },
   uploadButtonView: {
     width: 40,
@@ -120,8 +99,8 @@ const styles = StyleSheet.create({
   upload_button_text: {
     color: '#8D43A4',
     fontSize: 14,
+    fontFamily: fonts.MontserratMedium,
   },
-
 
   file_list_container: {
     marginTop: 8,
@@ -168,8 +147,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   label: {
-    color: '#787571',
+    color: '#344054',
     fontSize: 14,
-    marginLeft:5
+    fontFamily: fonts.InterMedium,
   },
 });

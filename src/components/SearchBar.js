@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View , Image , TextInput } from 'react-native'
 import React from 'react'
+import fonts from '../utils/fonts'
 
-const SearchBar = () => {
+const SearchBar = ({placeholder}) => {
   return (
     <View style={styles.searchBar_Container}>
           <Image source={require('../assets/icons/Icon.png')} />
-          <TextInput placeholder="Search" style={styles.input} />
+          <TextInput placeholder={placeholder} style={styles.input} placeholderTextColor={'#667085'} />
      </View>
   )
 }
@@ -16,7 +17,6 @@ const styles = StyleSheet.create({
     searchBar_Container: {
         width: 358,
         height: 44,
-        // backgroundColor:'#D0D5DD',
         backgroundColor: '#F6F6F6',
         borderRadius: 8,
         flexDirection: 'row',
@@ -26,5 +26,7 @@ const styles = StyleSheet.create({
       },
       input: {
         marginLeft: 8,
+        fontFamily:fonts.InterRegular,
+        fontSize:16
       },
 })

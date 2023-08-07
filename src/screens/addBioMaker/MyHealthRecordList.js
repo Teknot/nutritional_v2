@@ -10,6 +10,7 @@ import React from 'react';
 import HeaderWithLeftRightIcon from '../../components/HeaderWithLeftRightIcon';
 import ArrowLeft from '../../assets/icons/ArrowLeft.png';
 import CustomButton from '../../components/CustomButton';
+import fonts from '../../utils/fonts';
 
 const recordData = [
   {id: 1, name: 'Allergies', number_records: '4 records'},
@@ -33,25 +34,24 @@ const MyHealthRecordList = ({navigation}) => {
           console.warn('rightPressed');
         }}
         title={'My Health Record'}
+        color={'#0F0E0F'}
       />
       <ScrollView
-      contentContainerStyle={{paddingBottom:20}}
-      showsVerticalScrollIndicator={false}
-      >
+        contentContainerStyle={{paddingBottom: 20}}
+        showsVerticalScrollIndicator={false}>
         {recordData.map(item => (
           <TouchableOpacity style={styles.record_item_view} key={item.id}>
             <Text style={styles.record_name}>{item.name}</Text>
             <Text style={styles.record_number}>{item.number_records}</Text>
           </TouchableOpacity>
         ))}
-        <View style={{marginTop:20}}>
-          
-      <CustomButton
-        title={'Select Multiple Test Record'}
-        onPres={() => {
-          navigation.navigate('UploadHealthTestMultiple');
-        }}
-      />
+        <View style={{marginTop: 20}}>
+          <CustomButton
+            title={'Select Multiple Test Record'}
+            onPres={() => {
+              navigation.navigate('UploadHealthTestMultiple');
+            }}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -78,10 +78,12 @@ const styles = StyleSheet.create({
   record_name: {
     color: 'black',
     fontSize: 16,
+    fontFamily: fonts.MontserratSemiBold,
   },
   record_number: {
     color: '#787571',
     fontSize: 14,
     marginTop: 8,
+    fontFamily: fonts.MontserratRegular,
   },
 });

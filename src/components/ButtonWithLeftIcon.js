@@ -1,11 +1,10 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
+import fonts from '../utils/fonts';
 
 const ButtonWithLeftIcon = ({onPress}) => {
   return (
-    <TouchableOpacity style={styles.button}
-    onPress={onPress}
-    >
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <Image source={require('../assets/icons/Plus.png')} tintColor={'black'} />
       <Text style={styles.button_text}>Add different test category result</Text>
     </TouchableOpacity>
@@ -31,5 +30,7 @@ const styles = StyleSheet.create({
   button_text: {
     fontSize: 16,
     marginLeft: 8,
+    color: '#344054',
+    fontFamily: fonts.InterMedium,
   },
 });

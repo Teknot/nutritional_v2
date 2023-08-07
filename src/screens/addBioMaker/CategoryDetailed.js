@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native';
+import {StyleSheet, View, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
 import HeaderWithDoubleTitleWithIcons from '../../components/HeaderWithDoubleTitleWithIcons';
 import ArrowLeft from '../../assets/icons/ArrowLeft.png';
@@ -29,7 +29,7 @@ const CategoryDetailed = ({navigation, route}) => {
         }}
       />
       <View style={styles.searchbar_view}>
-        <SearchBar />
+        <SearchBar placeholder={'Search biomarker in glycemic'} />
       </View>
       <ScrollView
         contentContainerStyle={styles.vertical_list_view}

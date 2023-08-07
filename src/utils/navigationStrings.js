@@ -1,7 +1,6 @@
 export default {
   // Add BioMaker
   UploadHealthTest: 'UploadHealthTest',
-  ComponentsList: 'ComponentsList',
   MyHealthRecordList:'MyHealthRecordList',
   UploadHealthTestMultiple:'UploadHealthTestMultiple',
   DetailedBioMakerEntry:'DetailedBioMakerEntry',

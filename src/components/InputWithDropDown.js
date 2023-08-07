@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View, TextInput} from 'react-native';
 import React from 'react';
 import {Dropdown} from 'react-native-element-dropdown';
+import fonts from '../utils/fonts';
 const InputWithDropDown = ({
   value,
   setValue,
@@ -10,10 +11,14 @@ const InputWithDropDown = ({
   textPlaceholder,
 }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       <View style={styles.input_view}>
-        <TextInput placeholder={textPlaceholder} style={styles.input} />
+        <TextInput
+          placeholder={textPlaceholder}
+          style={styles.input}
+          placeholderTextColor={'#667085'}
+        />
         <Dropdown
           style={styles.dropdown}
           placeholderStyle={styles.placeholderStyle}
@@ -49,6 +54,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     paddingHorizontal: 14,
     paddingVertical: 10,
+    fontSize: 16,
+    fontFamily: fonts.InterRegular,
   },
   input_view: {
     flexDirection: 'row',
@@ -56,12 +63,10 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   label: {
-    fontSize: 15,
-    lineHeight: 24,
-    fontWeight: '600',
-    color: '#252B42',
+    fontSize: 14,
+    color: '#292724',
     marginHorizontal: 3,
-    marginTop:10
+    fontFamily: fonts.InterMedium,
   },
   dropdown: {
     height: 44,
@@ -75,6 +80,8 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 16,
+    color: '#667085',
+    fontFamily: fonts.InterRegular,
   },
   selectedTextStyle: {
     fontSize: 16,
@@ -86,5 +93,8 @@ const styles = StyleSheet.create({
   iconStyle: {
     width: 20,
     height: 20,
+  },
+  container: {
+    marginVertical: 8,
   },
 });

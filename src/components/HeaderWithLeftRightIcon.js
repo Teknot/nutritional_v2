@@ -1,12 +1,13 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
-
+import fonts from '../utils/fonts';
 const HeaderWithLeftRightIcon = ({
   leftIcon,
   rightIcon,
   title,
   leftOnPress,
   rightOnPress,
+  color,
 }) => {
   return (
     <View style={styles.container}>
@@ -18,14 +19,15 @@ const HeaderWithLeftRightIcon = ({
         </View>
         {rightIcon && (
           <View>
-            <TouchableOpacity style={{width:28 , height:28}} onPress={rightOnPress}>
-              
+            <TouchableOpacity
+              style={{width: 28, height: 28}}
+              onPress={rightOnPress}>
               <Image source={rightIcon} style={styles.button_image} />
             </TouchableOpacity>
           </View>
         )}
       </View>
-      <Text style={styles.header_title}>{title}</Text>
+      <Text style={[styles.header_title, {color: color}]}>{title}</Text>
     </View>
   );
 };
@@ -55,5 +57,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '500',
     marginTop: 24,
+    fontFamily: fonts.MontserratSemiBold,
   },
 });

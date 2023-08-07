@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
+import fonts from '../utils/fonts';
 
 const HeaderWithDoubleTitleWithIcons = ({
   leftIcon,
@@ -56,12 +57,13 @@ const styles = StyleSheet.create({
   },
   header_title: {
     fontSize: 24,
-    fontWeight: '500',
     color: '#292724',
+    fontFamily: fonts.MontserratSemiBold,
   },
   header_subtitle: {
     marginTop: 24,
     fontSize: 14,
     color: '#292724',
+    fontFamily: fonts.MontserratMedium,
   },
 });

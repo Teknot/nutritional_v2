@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
+import fonts from '../../utils/fonts';
 const DiagnosticFunction = [
   {id: 1, name: 'Diabetes'},
   {id: 2, name: 'Metabolic health'},
@@ -63,7 +64,7 @@ const Summary = () => {
               <Text style={styles.upper_card_inner_text}>
                 Manage your health to get to optimal ranges
               </Text>
-              <Text style={{marginTop: 10, color: '#24483F'}}>
+              <Text style={styles.upper_card_inner_subText}>
                 5 suggested activities
               </Text>
             </View>
@@ -115,7 +116,9 @@ const Summary = () => {
             <View style={styles.function_item_view}>
               {DiagnosticFunction.map(item => (
                 <View style={styles.function_item} key={item.id}>
-                  <Text>{item.name}</Text>
+                  <Text style={styles.function_item_button_text}>
+                    {item.name}
+                  </Text>
                 </View>
               ))}
             </View>
@@ -124,13 +127,11 @@ const Summary = () => {
           <View style={styles.range_view}>
             <Text style={styles.range_heading}>Ranges</Text>
             <View style={styles.range_table_view}>
-              <Text style={{width: 103, color: '#292724', fontSize: 12}}>
-                Ranges
-              </Text>
-              <Text style={{width: 103, color: '#292724', fontSize: 12}}>
+              <Text style={styles.range_table_heading_text}>Ranges</Text>
+              <Text style={styles.range_table_heading_text}>
                 Functional ranges (mg/dL)
               </Text>
-              <Text style={{width: 103, color: '#292724', fontSize: 12}}>
+              <Text style={styles.range_table_heading_text}>
                 Standard ranges (mg/dL)
               </Text>
             </View>
@@ -142,13 +143,11 @@ const Summary = () => {
                     : [styles.range_item_figure, {backgroundColor: '#F7F8FA'}]
                 }
                 key={item.id}>
-                <Text style={{width: 103, color: '#22212A', fontSize: 14}}>
-                  {item.range}
-                </Text>
-                <Text style={{width: 103, color: '#22212A', fontSize: 14}}>
+                <Text style={styles.range_item_item}>{item.range}</Text>
+                <Text style={styles.range_item_item}>
                   {item.functional_ranges}
                 </Text>
-                <Text style={{width: 103, color: '#22212A', fontSize: 14}}>
+                <Text style={styles.range_item_item}>
                   {item.standard_ranges}
                 </Text>
               </View>
@@ -181,6 +180,8 @@ const styles = StyleSheet.create({
   add_result_text: {
     fontSize: 16,
     marginTop: 15,
+    color: '#292724',
+    fontFamily: fonts.MontserratSemiBold,
   },
   add_result_button: {
     backgroundColor: '#8D43A4',
@@ -194,6 +195,7 @@ const styles = StyleSheet.create({
   add_result_button_text: {
     color: '#ffffff',
     marginLeft: 8,
+    fontFamily: fonts.InterMedium,
   },
   upper_card: {
     width: 171,
@@ -221,6 +223,7 @@ const styles = StyleSheet.create({
   upper_card_inner_text: {
     color: '#24483F',
     fontSize: 14,
+    fontFamily: fonts.MontserratSemiBold,
   },
   arrow_button: {
     width: 32,
@@ -253,11 +256,13 @@ const styles = StyleSheet.create({
     color: '#8D43A4',
     fontSize: 14,
     textAlign: 'center',
+    fontFamily: fonts.MontserratSemiBold,
   },
   progress_upper_text: {
     color: '#8D43A4',
     fontSize: 24,
     fontWeight: 'bold',
+    fontFamily: fonts.InterMedium,
   },
   learn_more_view: {
     flexDirection: 'row',
@@ -269,10 +274,12 @@ const styles = StyleSheet.create({
   learn_more_heading: {
     color: '#2b2b2b',
     fontSize: 18,
+    fontFamily: fonts.MontserratSemiBold,
   },
   learn_more_button_text: {
     color: '#8D43A4',
     fontSize: 14,
+    fontFamily: fonts.MontserratSemiBold,
   },
   bottom_subContent_view: {
     marginTop: 20,
@@ -280,6 +287,7 @@ const styles = StyleSheet.create({
   learn_more_paragraph: {
     color: '#2b2b2b',
     fontSize: 16,
+    fontFamily: fonts.MontserratRegular,
   },
   learn_more_paragraph_view: {
     padding: 16,
@@ -324,9 +332,33 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     fontSize: 18,
     color: '#2b2b2b',
+    fontFamily: fonts.MontserratSemiBold,
   },
   diagnostic_heading: {
     fontSize: 18,
     color: '#2b2b2b',
+    fontFamily: fonts.MontserratSemiBold,
+  },
+  upper_card_inner_subText: {
+    marginTop: 10,
+    color: '#24483F',
+    fontFamily: fonts.MontserratRegular,
+  },
+  function_item_button_text: {
+    fontSize: 14,
+    color: '#000000',
+    fontFamily: fonts.MontserratMedium,
+  },
+  range_table_heading_text: {
+    width: 103,
+    color: '#292724',
+    fontSize: 12,
+    fontFamily: fonts.MontserratMedium,
+  },
+  range_item_item: {
+    width: 103,
+    color: '#22212A',
+    fontSize: 14,
+    fontFamily: fonts.MontserratMedium,
   },
 });

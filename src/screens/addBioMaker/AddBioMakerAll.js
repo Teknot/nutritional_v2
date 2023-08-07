@@ -15,6 +15,7 @@ import AllBioMaker from '../../components/AddBiomakerFilterComponents/AllBioMake
 import MostPopular from '../../components/AddBiomakerFilterComponents/MostPopular';
 import Recently from '../../components/AddBiomakerFilterComponents/Recently';
 import Recommended from '../../components/AddBiomakerFilterComponents/Recommended';
+import fonts from '../../utils/fonts';
 const AddBioMakerAll = ({navigation}) => {
   const [filterState, setFilterState] = useState('All');
   return (
@@ -26,12 +27,13 @@ const AddBioMakerAll = ({navigation}) => {
           navigation.goBack();
         }}
         rightOnPress={() => {
-         navigation.navigate('MultipleDetailedBioMakerEntry');
+          navigation.navigate('MultipleDetailedBioMakerEntry');
         }}
-        title={'Add Biomaker result'}
+        title={'Add biomaker result'}
+        color={'#0F0E0F'}
       />
-      <View style={{alignItems:'center'}}>
-      <SearchBar />
+      <View style={{alignItems: 'center'}}>
+        <SearchBar placeholder={'Search biomaker'} />
       </View>
       <View style={{height: 60}}>
         <ScrollView
@@ -114,7 +116,7 @@ const AddBioMakerAll = ({navigation}) => {
       </View>
       <View>
         {filterState === 'All' ? (
-          <AllBioMaker navigation={navigation}/>
+          <AllBioMaker navigation={navigation} />
         ) : //
         filterState === 'Most popular' ? (
           <MostPopular />
@@ -133,7 +135,6 @@ export default AddBioMakerAll;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
     backgroundColor: '#ffffff',
   },
   filter_btn_view: {
@@ -149,5 +150,6 @@ const styles = StyleSheet.create({
   },
   filter_btn_text: {
     fontSize: 16,
+    fontFamily: fonts.MontserratMedium,
   },
 });

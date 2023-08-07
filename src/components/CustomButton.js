@@ -1,11 +1,10 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
+import fonts from '../utils/fonts';
 
-const CustomButton = ({title , onPres}) => {
+const CustomButton = ({title, onPres}) => {
   return (
-    <TouchableOpacity style={styles.button}
-    onPress={onPres}
-    >
+    <TouchableOpacity style={styles.button} onPress={onPres}>
       <Text style={styles.button_text}>{title}</Text>
     </TouchableOpacity>
   );
@@ -25,5 +24,6 @@ const styles = StyleSheet.create({
   button_text: {
     color: '#ffffff',
     fontSize: 16,
+    fontFamily:fonts.MontserratSemiBold
   },
 });

@@ -13,6 +13,7 @@ import MenuDot from '../../assets/icons/DotsThreeOutline.png';
 import HeaderWithDoubleTitleWithIcons from '../../components/HeaderWithDoubleTitleWithIcons';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 import Summary from '../../components/ResultBioMakerFilterComponent/Summary';
+import fonts from '../../utils/fonts';
 
 const DiagnosticFunction = [
   {id: 1, name: 'Diabetes'},
@@ -224,5 +225,6 @@ const styles = StyleSheet.create({
   },
   filter_btn_text: {
     fontSize: 16,
+    fontFamily:fonts.MontserratMedium
   },
 });
