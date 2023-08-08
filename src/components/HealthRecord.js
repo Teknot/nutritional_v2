@@ -11,7 +11,7 @@ const listData = [
   {label: 'hello', value: 'hello'},
 ];
 
-const HealthRecord = ({itemNo, key}) => {
+const HealthRecord = ({uniqueKey, onPress, item}) => {
   const [selectCategory, setSelectCategory] = useState('');
   const [DatePickerVisibility, setDatePickerVisibility] = useState(false);
   const [showDate, setShowDate] = useState('Select Date');
@@ -51,31 +51,33 @@ const HealthRecord = ({itemNo, key}) => {
     hideDatePicker();
   };
   return (
-    <View key={key}>
-      {itemNo > 1 ? (
-        <View style={styles.upper_View}>
-          {itemNo === 1 ? (
-            <Text style={styles.upper_View_text}>First Test Category</Text>
-          ) : itemNo === 2 ? (
-            <Text style={styles.upper_View_text}>Second Test Category</Text>
-          ) : itemNo === 3 ? (
-            <Text style={styles.upper_View_text}>Third Test Category</Text>
-          ) : itemNo === 4 ? (
-            <Text style={styles.upper_View_text}>fourth Test Category</Text>
-          ) : itemNo === 5 ? (
-            <Text style={styles.upper_View_text}>Fifth Test Category</Text>
-          ) : null}
+    <View key={uniqueKey}>
+      <View style={styles.upper_View}>
+        {uniqueKey + 1 === 1 ? (
+          <Text style={styles.upper_View_text}>First Test Category</Text>
+        ) : uniqueKey + 1 === 2 ? (
+          <Text style={styles.upper_View_text}>Second Test Category</Text>
+        ) : uniqueKey + 1 === 3 ? (
+          <Text style={styles.upper_View_text}>Third Test Category</Text>
+        ) : uniqueKey + 1 === 4 ? (
+          <Text style={styles.upper_View_text}>fourth Test Category</Text>
+        ) : uniqueKey + 1 === 5 ? (
+          <Text style={styles.upper_View_text}>Fifth Test Category</Text>
+        ) : null}
 
-          {itemNo > 1 ? (
-            <TouchableOpacity>
-              <Image
-                source={require('../assets/icons/Trash.png')}
-                tintColor={'black'}
-              />
-            </TouchableOpacity>
-          ) : null}
-        </View>
-      ) : null}
+        {uniqueKey + 1 > 1 ? (
+          <TouchableOpacity
+            onPress={() => {
+              onPress(item.id);
+            }}>
+            <Image
+              source={require('../assets/icons/Trash.png')}
+              tintColor={'black'}
+            />
+          </TouchableOpacity>
+        ) : null}
+      </View>
+
       <DropDownMenuWithLabel
         placeholder={'Select Category'}
         label={'Category'}
@@ -85,7 +87,7 @@ const HealthRecord = ({itemNo, key}) => {
       />
 
       <View style={styles.dateAndTime_view}>
-        <Text style={styles.label}>Label</Text>
+        <Text style={styles.label}>Date and time of test</Text>
         <View style={styles.subContainer}>
           <View style={styles.button_view}>
             <TouchableOpacity style={styles.button} onPress={showDatePicker}>
@@ -130,13 +132,6 @@ const HealthRecord = ({itemNo, key}) => {
         data={listData}
       />
       <FileUploaderWithLabel />
-      {/* <ButtonWithLeftIcon  onPress={()=>{console.warn('pressed')}}/>
-      <CustomButton
-        title={'Save'}
-        onPres={() => {
-          navigation.navigate('MyHealthRecordList');
-        }}
-      /> */}
     </View>
   );
 };

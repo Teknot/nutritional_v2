@@ -9,6 +9,7 @@ import AddBioMakerAll from '../screens/addBioMaker/AddBioMakerAll';
 import CategoryDetailed from '../screens/addBioMaker/CategoryDetailed';
 import MultipleDetailedBioMakerEntry from '../screens/addBioMaker/MultipleDetailedBioMakerEntry';
 import AddBioMakerResult from '../screens/addBioMaker/AddBioMakerResult';
+import MainDashboard from '../screens/dashboard/MainDashboard';
 
 
 const Stack = createStackNavigator();
@@ -47,6 +48,10 @@ const StackNavigator = () => {
       <Stack.Screen
         name={navigationStrings.AddBioMakerResult}
         component={AddBioMakerResult}
+      />
+      <Stack.Screen
+        name={navigationStrings.MainDashboard}
+        component={MainDashboard}
       />
     </Stack.Navigator>
   );

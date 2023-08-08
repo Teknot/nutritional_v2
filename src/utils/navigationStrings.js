@@ -8,4 +8,7 @@ export default {
   CategoryDetailed:'CategoryDetailed',
   MultipleDetailedBioMakerEntry:'MultipleDetailedBioMakerEntry',
   AddBioMakerResult:'AddBioMakerResult',
+
+  // DashBoard
+  MainDashboard:'MainDashboard',
 };

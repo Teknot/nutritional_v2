@@ -2,9 +2,12 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import fonts from '../utils/fonts';
 
-const ButtonWithLeftIcon = ({onPress}) => {
+const ButtonWithLeftIcon = ({onPress, disabled}) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity
+      style={styles.button}
+      onPress={onPress}
+      disabled={disabled}>
       <Image source={require('../assets/icons/Plus.png')} tintColor={'black'} />
       <Text style={styles.button_text}>Add different test category result</Text>
     </TouchableOpacity>

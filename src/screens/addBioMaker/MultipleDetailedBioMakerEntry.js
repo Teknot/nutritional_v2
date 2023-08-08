@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   ScrollView,
   Image,
-
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
@@ -31,7 +30,6 @@ const MultipleDetailedBioMakerEntry = ({navigation}) => {
   const [selectedDate, setSelectedDate] = useState('');
   const [showDate, setShowDate] = useState('Select Date');
   const [timePickerVisibility, setTimePickerVisibility] = useState(false);
-  const [selectedTime, setSelectedTime] = useState('');
   const [showTime, setShowTime] = useState('Select Date');
   const [value, setValue] = useState('');
   const showDatePicker = () => {
@@ -61,9 +59,8 @@ const MultipleDetailedBioMakerEntry = ({navigation}) => {
   const handleTimeConfirm = time => {
     const NewTime = new Date(time);
     const Time = NewTime.toLocaleTimeString();
-    setShowTime(Time)
+    setShowTime(Time);
 
- 
     hideDatePicker();
   };
   return (
@@ -74,9 +71,7 @@ const MultipleDetailedBioMakerEntry = ({navigation}) => {
         leftOnPress={() => {
           navigation.goBack();
         }}
-        rightOnPress={() => {
-        
-        }}
+        rightOnPress={() => {}}
         title={'Input Hormone Test Result'}
         titleColor={'#292724'}
       />
@@ -271,9 +266,9 @@ const styles = StyleSheet.create({
   heading: {
     color: '#292724',
     fontSize: 18,
-    fontFamily:fonts.MontserratSemiBold
+    fontFamily: fonts.MontserratSemiBold,
   },
-  dateAndTime_view:{
-    marginVertical:8
-  }
+  dateAndTime_view: {
+    marginVertical: 8,
+  },
 });

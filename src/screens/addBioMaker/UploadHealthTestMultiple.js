@@ -13,25 +13,45 @@ const listData = [
 ];
 
 const UploadHealthTestMultiple = ({navigation}) => {
-  // const [uploadFiles, setUploadFiles] = useState(1);
   const [uploadFiles, setUploadFiles] = useState([
-    <HealthRecord key={Math.random()} />,
+    {
+      id: Math.random(),
+      category: '',
+      date: '',
+      time: '',
+      cycle: '',
+      provider: '',
+      file_url: '',
+    },
   ]);
 
   const handleAdd = () => {
-    const fileId = Math.random();
-    const newComponent = (
-      <HealthRecord
-        itemNo={uploadFiles.length + 1}
-        key={fileId}
-        text={fileId}
-      />
-    );
-    setUploadFiles([...uploadFiles, newComponent]);
-    // setUploadFiles(prevDocs => [...prevDocs, {id: fileId, doc:<HealthRecord/>}]);
+    setUploadFiles(prev => [
+      ...prev,
+      {
+        id: Math.random(),
+        category: '',
+        date: '',
+        time: '',
+        cycle: '',
+        provider: '',
+        file_url: '',
+      },
+    ]);
   };
 
-  console.log('array of component', uploadFiles);
+  const handleDelete = index => {
+    const arr = [...uploadFiles];
+    arr.splice(
+      arr.findIndex(value => value.id === index),
+      1,
+    );
+    console.log(
+      'index that deleted ',
+      arr.findIndex(value => value.id === index),
+    );
+    setUploadFiles(arr);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -53,9 +73,21 @@ const UploadHealthTestMultiple = ({navigation}) => {
         color={'#292724'}
       />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {uploadFiles.map(component => component)}
+        {uploadFiles.map((item, index) => (
+          <HealthRecord
+            key={index}
+            uniqueKey={index}
+            onPress={x => {
+              handleDelete(x);
+            }}
+            item={item}
+          />
+        ))}
 
-        <ButtonWithLeftIcon onPress={handleAdd} />
+        <ButtonWithLeftIcon
+          onPress={handleAdd}
+          disabled={uploadFiles.length === 5 ? true : false}
+        />
         <CustomButton
           title={'Save'}
           onPres={() => {

@@ -63,7 +63,7 @@ const AddBioMakerResult = ({navigation}) => {
         }}
         rightIcon={MenuDot}
         rightOnPress={() => {
-          console.warn('pressed');
+        navigation.navigate('MainDashboard');
         }}
       />
       <View

@@ -21,7 +21,6 @@ const FileUploaderWithLabel = () => {
     }
   };
   const handleDelete = index => {
-    console.log(index);
     const arr = [...uploadFiles];
     arr.splice(
       arr.findIndex(value => value.id === index),
